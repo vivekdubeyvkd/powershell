@@ -1,3 +1,8 @@
+<#
+if you save this script in say script.ps1, then
+run it as :
+  <absolute path to script.ps1> -MSIFilePath <absolute path to msi file you want to query>
+#>
 [CmdletBinding()] 
 param(
 	[Parameter(Mandatory=$True, 
