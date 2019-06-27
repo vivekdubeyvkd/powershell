@@ -8,7 +8,7 @@ param(
 	[Parameter(Mandatory=$True, 
 	ValueFromPipeline=$True, 
 	ValueFromPipelineByPropertyName=$True, 
-	HelpMessage='Error !!!!! Invalid MSI path !!!!! please provide a valid MSI you would like to query and rerun ...... exiting .......')]
+	HelpMessage='Error !!!!! Invalid MSI path !!!!! please provide a valid MSI path')]
 	[IO.FileInfo[]] $MSIFilePath
 )
 
