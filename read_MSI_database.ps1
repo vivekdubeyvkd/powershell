@@ -8,27 +8,25 @@ param(
 )
 
 function Get-MsiDatabaseVersion {
-	    param (
-		     [IO.FileInfo[]] $FilePath
-	    )
-
-	    try {
-		     $com_object = New-Object -com WindowsInstaller.Installer 
-
-         $database = $com_object.GetType().InvokeMember( 
-            "OpenDatabase", 
-            "InvokeMethod", 
-            $Null, 
-            $com_object, 
-            @($FilePath.FullName, 0) 
-        ) 
-        $query = "SELECT * FROM Registry" 
-        $View = $database.GetType().InvokeMember( 
-            "OpenView", 
-            "InvokeMethod", 
-            $Null, 
-            $database, 
-            ($query) 
+	param (
+		[IO.FileInfo[]] $FilePath
+	)
+	try {
+		$com_object = New-Object -com WindowsInstaller.Installer 
+		$database = $com_object.GetType().InvokeMember( 
+            	"OpenDatabase", 
+            	"InvokeMethod", 
+            	$Null, 
+            	$com_object, 
+            	@($FilePath.FullName, 0) 
+        	) 
+        	$query = "SELECT * FROM Registry" 
+        	$View = $database.GetType().InvokeMember( 
+            	"OpenView", 
+            	"InvokeMethod", 
+            	$Null, 
+            	$database, 
+            	($query) 
         )
         $View.GetType().InvokeMember("Execute", "InvokeMethod", $Null, $View, $Null) 
  
