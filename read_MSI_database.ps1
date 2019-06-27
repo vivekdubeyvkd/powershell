@@ -49,8 +49,8 @@ function Get-MsiDatabaseVersion {
                 $Null, 
                 $View, 
                 $Null 
-            ) 
-			      $count++
+            )
+	    $count++
          }
          $count
          $msi_props
