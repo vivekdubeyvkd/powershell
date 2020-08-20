@@ -3,8 +3,21 @@ function validate_checksum_of_file {
         [string]$FileWithAbsolutePath,
         [string]$OriginalChecksum,
         [string]$Algorithm
-    )
+     )
   
+    <# Function parameters are explained below --->
+      > FileWithAbsolutePath: Input file for which checksum needs to be computed and validated against a provided checksum value
+
+      > Possible choices for Algorithm are given below:
+        SHA1
+        SHA256
+        SHA384
+        SHA512
+        MD5
+
+      > OriginalChecksum: known checksum value for a file against which the computed checksum for that file needs to be validated 
+    #>
+
     echo "####### $Algorithm validation started for file $FileWithAbsolutePath  #####"
 
     $computed_checksum_object = Get-FileHash $FileWithAbsolutePath -Algorithm $CheckSumType | Select-Object Hash
@@ -21,21 +34,7 @@ function validate_checksum_of_file {
     echo "####### $Algorithm validation completed for file $FileWithAbsolutePath  #####"
 }  
 
-<# you can call validate_checksum_of_file function as shown below #>
-
-<# Parameters are explained below --->
-> FileWithAbsolutePath: Input file for which checksum needs to be computed and validated against a provided checksum value
-
-> Possible choices for Algorithm are given below:
-    SHA1
-    SHA256
-    SHA384
-    SHA512
-    MD5
-
-> OriginalChecksum: known checksum value for a file against which the computed checksum for that file needs to be validated 
-#>
-
+<# you can call validate_checksum_of_file function as shown #>
 validate_checksum_of_file -FileWithAbsolutePath "C:\temp\text.txt" -OriginalChecksum "95c57g2d7bf9ae79392e4bfcb5f670198fdbed7f07dc7d53e9f1b7008b27897c0" -Algorithm "SHA256"
 
 
